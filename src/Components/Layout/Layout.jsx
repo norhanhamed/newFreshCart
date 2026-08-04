@@ -7,7 +7,7 @@ export default function Layout() {
   return (
     <>
      <Navbar />
-     <div className='py-26'>
+     <div className='pb-[240px] pt-[80px] myContainer'>
      <Outlet  />
 
      </div>
