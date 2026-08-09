@@ -44,7 +44,7 @@ export default function Register() {
                 // nav to login when sign up success
       setTimeout(() => {
       if (data.message === "success"){
-        navigate("/login")
+        navigate("/auth/login")
       }
 
       }, 3000);
