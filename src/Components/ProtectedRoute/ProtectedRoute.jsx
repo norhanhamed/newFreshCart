@@ -5,11 +5,11 @@ import { userContext } from '../../Context/User.Context';
 export default function ProtectedRoute({ children }) {
     const { token } = useContext(userContext);
     console.log(token);
+
     if (token) {
         return children;
-    } else {
-        return <Navigate to="/auth/login" />
-
     }
+
+    return <Navigate to="/auth/login"  />;
 
 }

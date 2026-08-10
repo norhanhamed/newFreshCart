@@ -8,10 +8,16 @@ import NotFound from './Pages/NotFound/NotFound';
 import { Toaster } from 'react-hot-toast';
 import Home from './Pages/Home/Home';
 import UserProvider from './Context/User.Context';
+import ProtectedRoute from './Components/ProtectedRoute/ProtectedRoute';
 function App() {
   const routes = createBrowserRouter([
     {
-      path: "/", element: <Layout />, children: [
+      path: "/",
+      element: (
+        <ProtectedRoute>
+          <Layout />
+        </ProtectedRoute>)
+      , children: [
         { index: true, element: <Home /> },
         { path: "/category/:id", element: <h2>category </h2> },
 

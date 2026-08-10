@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 import { userContext } from './../../Context/User.Context';
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
-    const { token } = useContext(userContext);
+    const { token,logOut } = useContext(userContext);
 
     return (
         <>
@@ -99,10 +99,10 @@ export default function Navbar() {
                                     </li>
                                 </>
                             ) : (
-                                <li>
-                                    <a href="/">
+                                <li className='cursor-pointer '>
+                                    <span onClick={logOut}>
                                         <i className='fa-solid fa-right-from-bracket text-2xl'></i>
-                                    </a>
+                                    </span>
                                 </li>
                             )}
 
