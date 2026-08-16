@@ -47,15 +47,17 @@ The Home page is divided into reusable React components:
 
 Implemented a reusable Cart Context to manage shopping cart operations across the FreshCart application.
 
-Integrated the FreshCart E-commerce API using Axios.
-Implemented Add Product to Cart functionality.
-Implemented Get Cart Information functionality.
-Implemented Remove Product from Cart functionality.
-Managed cart state globally using React Context API.
-Created reusable cart functions that can be accessed across different components.
-Integrated authentication tokens for authorized cart operations.
-Added user feedback notifications using React Hot Toast.
-Handled cart states dynamically, including empty carts and cart item counts
+.Integrated the FreshCart E-commerce API using Axios.
+.Implemented Add Product to Cart functionality.
+.Implemented Get Cart Information functionality.
+.Implemented Remove Product from Cart functionality.
+.Implemented update Product from Cart functionality.
+.Implemented Remove all cart from Cart functionality.
+.Managed cart state globally using React Context API.
+.Created reusable cart functions that can be accessed across different components.
+.Integrated authentication tokens for authorized cart operations.
+.Added user feedback notifications using React Hot Toast.
+.Handled cart states dynamically, including empty carts and cart item counts
 
 
 
