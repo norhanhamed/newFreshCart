@@ -1,0 +1,66 @@
+import React, { useContext, useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import Loading from './../../Components/Loading/Loading';
+import { CartContext } from '../../Context/Cart.Context';
+
+export default function Cart() {
+  // const for getCartInfo fun from cartContext
+  const { getCartInfo, cartInfo } = useContext(CartContext);
+  useEffect(() => { getCartInfo() }, []);
+
+    // const for deleteCartItem fun from cartContext
+const{ deleteCartItem } = useContext(CartContext)
+
+  return (
+    <>
+      {cartInfo === null ? (
+        <Loading />) : (
+        <section className='bg-slate-100 p-5'>
+          <h2 className='text-2xl font-bold mb-5 '>
+            <span>Shop Cart</span>
+            <i className="fa-solid fa-cart-shopping ml-2"></i>
+          </h2>
+
+          {cartInfo.numOfCartItems === 0 ? (
+            <div className='py-16 flex flex-col justify-center items-center'>
+              <h3 className='text-lg'>there are not items yet.</h3>
+              <Link to='/' className='btn-primary text-sm mt-2'> ADD YOUR FIRST PRODUCT TO CART</Link>
+            </div>
+          ) : (
+            cartInfo.data.products.map((product) => (
+              <div key={product._id} className="prouduct grid grid-cols-12 gap-5 mt-4">
+                <div className="col-span-1">
+                  <img src={product.product.imageCover} alt="imageCover" className="w-full" />
+                </div>
+                <div className="col-span-11 flex justify-between items-center">
+                  <div>
+                    <h3 className='text-lg font-semibold'>{product.product.title}</h3>
+                    <h4 className="text-primary">price: {product.price} L.E</h4>
+                    <button  onClick={()=>{deleteCartItem({productId: product.product.id}) }}
+                    className=" cursor-pointer btn-primary text-sm mt-3 bg-red-500">
+                      <i className="fa-solid fa-trash-can mr-2"></i> Remove
+                      </button>
+                  </div>
+
+                  <div className="flex gap-4 items-center ">
+                    <button className='btn-primary'>
+                      <i className="fa-solid fa-minus"></i>
+                    </button>
+                    <span className="text-lg font-bold">0</span>
+                    <button className='btn-primary'>
+                      <i className="fa-solid fa-plus"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))
+          )}
+
+        </section>
+      )
+
+      }
+
+    </>
+  )
+}

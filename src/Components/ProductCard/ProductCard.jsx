@@ -1,7 +1,9 @@
-import React from 'react'
-
+import React, { useContext } from 'react'
+import { Link } from 'react-router-dom';
+import { CartContext } from '../../Context/Cart.Context';
 export default function ProductCard({ productInfo }) {
-  const { title, price, category, ratingsAverage, images } = productInfo;
+  const { title, price, category, ratingsAverage, images ,id} = productInfo;
+  const { addProductToCart } = useContext(CartContext);
   return (
     <>
       <div className='col-span-12 sm-col-span-6 md:col-span-4 lg-col-span-3 xl:col-span-2 shadow-lg rounded-md overflow-hidden '>
@@ -15,12 +17,12 @@ export default function ProductCard({ productInfo }) {
             <div className="icon w-10 h-10 rounded-full bg-primary text-sm text-white flex justify-center items-center">
               <i className="fa-solid fa-heart"></i>
             </div>
-            <div className="icon w-10 h-10 rounded-full bg-primary text-sm text-white flex justify-center items-center">
+            <div onClick={()=>{addProductToCart({id})}} className="icon cursor-pointer w-10 h-10 rounded-full bg-primary text-sm text-white flex justify-center items-center">
               <i className="fa-solid fa-cart-shopping"></i>{""}
             </div>
-            <div className="icon w-10 h-10 rounded-full bg-primary text-sm text-white flex justify-center items-center">
+            <Link to={`/product/${id}`} className="icon w-10 h-10 rounded-full bg-primary text-sm text-white flex justify-center items-center">
               <i className="fa-solid fa-eye"></i>{""}
-            </div>
+            </Link>
 
           </div>
 

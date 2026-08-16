@@ -33,7 +33,7 @@ export default function Home() {
       <CategorySlider />
       <div className="grid grid-cols-12 gap-4">
         {products ? (
-          products.map((product) => <ProductCard productInfo={product} />)
+          products.map((product) => <ProductCard productInfo={product}  key={product.id}/>)
         ) :
           (<Loading />)
         }

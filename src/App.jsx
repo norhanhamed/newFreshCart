@@ -9,6 +9,9 @@ import { Toaster } from 'react-hot-toast';
 import Home from './Pages/Home/Home';
 import UserProvider from './Context/User.Context';
 import ProtectedRoute from './Components/ProtectedRoute/ProtectedRoute';
+import ProductDetails from './Pages/ProductDetails/ProductDetails';
+import Cart from './Pages/Cart/Cart';
+import CartProvider from './Context/Cart.Context';
 function App() {
   const routes = createBrowserRouter([
     {
@@ -20,7 +23,8 @@ function App() {
       , children: [
         { index: true, element: <Home /> },
         { path: "/category/:id", element: <h2>category </h2> },
-
+        { path: "/cart", element: <Cart /> },
+        { path: "/product/:id", element: <ProductDetails /> },
         { path: "*", element: <NotFound /> }
       ]
     },
@@ -42,8 +46,10 @@ function App() {
   return (
     <>
       <UserProvider >
-        <RouterProvider router={routes}></RouterProvider>
-        <Toaster />
+        <CartProvider>
+          <RouterProvider router={routes}></RouterProvider>
+          <Toaster />
+        </CartProvider>
       </UserProvider>
     </>
   )

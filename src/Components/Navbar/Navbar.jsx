@@ -1,11 +1,14 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState, } from 'react'
 import logo from "../../assets/images/freshcart-logo.svg"
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { userContext } from './../../Context/User.Context';
+import { CartContext } from '../../Context/Cart.Context';
+
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
-    const { token,logOut } = useContext(userContext);
-
+    const { token, logOut } = useContext(userContext);
+    const { getCartInfo, cartInfo } = useContext(CartContext);
+    useEffect(() => { getCartInfo() }, [])
     return (
         <>
             <nav className=' py-5 bg-slate-100 lg:h-auto w-full h-screen lg:p-3 myContainer fixed left-0 top-0 right-0 z-50'>
@@ -52,8 +55,14 @@ export default function Navbar() {
                             </ul>
                         ) : ("")}
 
+                        <Link to='/cart' className='ms-auto relative' >
+                            <i className="fa-solid fa-cart-shopping text-lg"></i>
+                            <span className="absolute top-0 right-0 translate-x-1/2 -translate-y-1/2 rounded-full text-sm font-bold text-white bg-primary w-5 h-5 flex justify-center items-center">
+                                {cartInfo === null ? (<i className='fa-solid fa-spinner fa-spin'></i>) : (cartInfo.numOfCartItems || 0)}</span>
+                        </Link>
+
                         {/* social Media Icons */}
-                        <ul className='flex lg:justify-center justify-start gap-6  lg:ms-auto py-5 lg:py-0' >
+                        <ul className='flex lg:justify-center justify-start gap-6  py-5 lg:py-0' >
                             <li>
                                 <NavLink to="https://www.facebook.com">
                                     <i className='fa-brands fa-facebook lg:text-xl text-2xl ' ></i>
