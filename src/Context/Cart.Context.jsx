@@ -74,8 +74,52 @@ export default function CartProvider({ children }) {
 
     }
 
+    //updatecartItem
+    async function updateCartItem({ id, count }) {
+        try {
+            const options = {
+                url: `https://ecommerce.routemisr.com/api/v2/cart/${id}`,
+                method: "PUT",
+                headers: {
+                    token,
+                    "Content-Type": "application/json",
+                },
+                data: { count }
+            };
+            let { data } = await axios.request(options);
+            console.log(data);
+            setCartInfo(data)
+
+        } catch (error) {
+            console.log(error)
+
+        }
+
+    }
+
+    //removeCart
+    async function removeCart() {
+        try {
+            const options = {
+                url: "https://ecommerce.routemisr.com/api/v2/cart",
+                method: "DELETE",
+                headers: {
+                    token,
+                },
+            };
+            let { data } = await axios.request(options);
+            console.log(data);
+            setCartInfo(data)
+
+        } catch (error) {
+            console.log(error)
+
+        }
+
+    }
+
     return (
-        <CartContext.Provider value={{ addProductToCart, getCartInfo, cartInfo, deleteCartItem, }} >
+        <CartContext.Provider value={{ addProductToCart, getCartInfo, cartInfo, deleteCartItem, updateCartItem, removeCart, }} >
             {children}
         </CartContext.Provider>
     )

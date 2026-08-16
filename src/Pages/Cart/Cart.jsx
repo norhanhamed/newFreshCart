@@ -5,11 +5,11 @@ import { CartContext } from '../../Context/Cart.Context';
 
 export default function Cart() {
   // const for getCartInfo fun from cartContext
-  const { getCartInfo, cartInfo } = useContext(CartContext);
+  const { getCartInfo, cartInfo, updateCartItem, removeCart } = useContext(CartContext);
   useEffect(() => { getCartInfo() }, []);
 
-    // const for deleteCartItem fun from cartContext
-const{ deleteCartItem } = useContext(CartContext)
+  // const for deleteCartItem fun from cartContext
+  const { deleteCartItem } = useContext(CartContext)
 
   return (
     <>
@@ -36,18 +36,20 @@ const{ deleteCartItem } = useContext(CartContext)
                   <div>
                     <h3 className='text-lg font-semibold'>{product.product.title}</h3>
                     <h4 className="text-primary">price: {product.price} L.E</h4>
-                    <button  onClick={()=>{deleteCartItem({productId: product.product.id}) }}
-                    className=" cursor-pointer btn-primary text-sm mt-3 bg-red-500">
+                    <button onClick={() => { deleteCartItem({ productId: product.product.id }) }}
+                      className=" cursor-pointer btn-primary text-sm mt-3 bg-red-500">
                       <i className="fa-solid fa-trash-can mr-2"></i> Remove
-                      </button>
+                    </button>
                   </div>
 
                   <div className="flex gap-4 items-center ">
-                    <button className='btn-primary'>
+                    <button onClick={() => { updateCartItem({ id: product.product.id, count: product.count - 1 }) }}
+                      className='btn-primary'>
                       <i className="fa-solid fa-minus"></i>
                     </button>
-                    <span className="text-lg font-bold">0</span>
-                    <button className='btn-primary'>
+                    <span className="text-lg font-bold">{product.count}</span>
+                    <button onClick={() => { updateCartItem({ id: product.product.id, count: product.count + 1 }) }}
+                      className='btn-primary'>
                       <i className="fa-solid fa-plus"></i>
                     </button>
                   </div>
@@ -55,7 +57,9 @@ const{ deleteCartItem } = useContext(CartContext)
               </div>
             ))
           )}
-
+          {cartInfo.numOfCartItems === 0 ? ("") : (<button onClick={() => { removeCart() }}
+            className="btn-primary bg-red-500 ms-auto block">Clear Cart</button>
+          ) }
         </section>
       )
 
