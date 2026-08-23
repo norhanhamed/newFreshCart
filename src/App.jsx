@@ -12,6 +12,8 @@ import ProtectedRoute from './Components/ProtectedRoute/ProtectedRoute';
 import ProductDetails from './Pages/ProductDetails/ProductDetails';
 import Cart from './Pages/Cart/Cart';
 import CartProvider from './Context/Cart.Context';
+import Checkout from './Pages/Checkout/Checkout';
+import AllOrders from './Pages/AllOrders/AllOrders';
 function App() {
   const routes = createBrowserRouter([
     {
@@ -24,6 +26,8 @@ function App() {
         { index: true, element: <Home /> },
         { path: "/category/:id", element: <h2>category </h2> },
         { path: "/cart", element: <Cart /> },
+        { path: "/chekout", element: <Checkout /> },
+        { path: "/allorders", element: <AllOrders /> },
         { path: "/product/:id", element: <ProductDetails /> },
         { path: "*", element: <NotFound /> }
       ]

@@ -24,7 +24,7 @@ export default function Navbar() {
                     </div>
 
                     <div className={`w-full lg:w-auto ${isOpen ? "flex" : "hidden"} lg:flex flex-col lg:flex-row gap-10 pt-10 lg:pt-0 lg:items-center items-start`}>
-                        {/* navLinks */}
+                        {/* navigationLinks */}
                         {token ? (
                             <ul className='flex flex-col lg:flex-row lg:gap-6 gap-8 lg:items-center items-start'>
                                 <li>
@@ -51,6 +51,12 @@ export default function Navbar() {
                                         return ` relative before:h-[2px] hover:before:w-full hover:font-bold before:transition-[width] before:duration-300 before:absolute before:bg-primary before:left-0 before:-bottom-1
                                         ${isActive ? "font-bold before:w-full" : " before:w-0 "} `;
                                     }} >Brands</NavLink>
+                                </li>
+                                  <li>
+                                    <NavLink to="/allorders" className={({ isActive }) => {
+                                        return ` relative before:h-[2px] hover:before:w-full hover:font-bold before:transition-[width] before:duration-300 before:absolute before:bg-primary before:left-0 before:-bottom-1
+                                        ${isActive ? "font-bold before:w-full" : " before:w-0 "} `;
+                                    }} >Orders</NavLink>
                                 </li>
                             </ul>
                         ) : ("")}

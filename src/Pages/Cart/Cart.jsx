@@ -44,12 +44,12 @@ export default function Cart() {
 
                   <div className="flex gap-4 items-center ">
                     <button onClick={() => { updateCartItem({ id: product.product.id, count: product.count - 1 }) }}
-                      className='btn-primary'>
+                      className='btn-primary cursor-pointer'>
                       <i className="fa-solid fa-minus"></i>
                     </button>
                     <span className="text-lg font-bold">{product.count}</span>
                     <button onClick={() => { updateCartItem({ id: product.product.id, count: product.count + 1 }) }}
-                      className='btn-primary'>
+                      className='btn-primary cursor-pointer'>
                       <i className="fa-solid fa-plus"></i>
                     </button>
                   </div>
@@ -58,12 +58,11 @@ export default function Cart() {
             ))
           )}
           {cartInfo.numOfCartItems === 0 ? ("") : (<button onClick={() => { removeCart() }}
-            className="btn-primary bg-red-500 ms-auto block">Clear Cart</button>
+            className="btn-primary bg-red-500 ms-auto block cursor-pointer">Clear Cart</button>
           ) }
         </section>
-      )
-
-      }
+      )}
+      <Link to="/chekout" className='btn-primary uppercase ms-auto block mt-3 w-fit' >next step</Link>
 
     </>
   )

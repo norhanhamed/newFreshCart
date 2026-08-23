@@ -10,6 +10,7 @@ export default function CartProvider({ children }) {
     const { token } = useContext(userContext);
 
     const [cartInfo, setCartInfo] = useState(null)
+    
     //addProductToCart function
     async function addProductToCart({ id }) {
         const options = {
@@ -119,7 +120,7 @@ export default function CartProvider({ children }) {
     }
 
     return (
-        <CartContext.Provider value={{ addProductToCart, getCartInfo, cartInfo, deleteCartItem, updateCartItem, removeCart, }} >
+        <CartContext.Provider value={{ addProductToCart, getCartInfo, cartInfo, setCartInfo, deleteCartItem, updateCartItem, removeCart, }} >
             {children}
         </CartContext.Provider>
     )
