@@ -21,7 +21,7 @@ import img3 from "../../assets/images/slider-image-3.jpeg"
 
 export default function HomeSlider() {
     return (
-        <section className='mb-10 grid grid-cols-12'>
+        <section className='mb-10 grid grid-cols-12 mt-0'>
 
             <div className='col-span-8'>
                 <Swiper

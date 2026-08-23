@@ -56,7 +56,7 @@ export default function ProductDetails() {
                                     <span> <i className='fa-solid fa-star text-yellow-400 mr-1'>{productDetails.ratingsAverage}</i></span>
                                 </div>
                                 <button onClick={() => addProductToCart({ id: productDetails.id })}
-                                    className='btn-primary w-full mt-4'>Add To Cart</button>
+                                    className='btn-primary cursor-pointer w-full mt-4'>Add To Cart</button>
 
                             </div>
                         </div>

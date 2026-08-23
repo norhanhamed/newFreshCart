@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import ProductCard from '../../Components/ProductCard/ProductCard'
 import HomeSlider from '../../Components/HomeSlider/HomeSlider'
 import axios from 'axios';
 import Loading from '../../Components/Loading/Loading';
 import CategorySlider from '../../Components/CategorySlider/CategorySlider';
 import { Helmet } from "react-helmet";
+import { useQuery } from '@tanstack/react-query';
 
 export default function Home() {
 
-  const [products, setProducts] = useState(null)
 
   async function getProducts() {
     const options = {
@@ -16,15 +16,17 @@ export default function Home() {
       method: "GET"
     };
 
-    const { data } = await axios.request(options);
-    // console.log(data);
-    setProducts(data.data);
-
-
+    return await axios.request(options);
   }
-  useEffect(() => {
-    getProducts();
-  }, [])
+  let { data, isLoading, isFetching, isError } = useQuery({
+    queryKey: ["products"],
+    queryFn: getProducts,
+  });
+
+  if (isLoading) {
+    return <Loading />
+  }
+
 
   return (
     <>
@@ -37,10 +39,7 @@ export default function Home() {
       <HomeSlider />
       <CategorySlider />
       <div className="grid grid-cols-12 gap-4">
-        {products ? (
-          products.map((product) => <ProductCard productInfo={product} key={product.id} />)
-        ) :
-          (<Loading />)
+        {data.data.data.map((product) => <ProductCard productInfo={product} key={product.id} />)
         }
       </div>
     </>
