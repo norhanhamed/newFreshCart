@@ -21,9 +21,9 @@ import img3 from "../../assets/images/slider-image-3.jpeg"
 
 export default function HomeSlider() {
     return (
-        <section className='mb-10 grid grid-cols-12 mt-0'>
+        <section className='mb-10 grid grid-cols-1 md:grid-cols-12 gap-2 mt-0'>
 
-            <div className='col-span-8'>
+            <div className='md:col-span-8 '>
                 <Swiper
                     // install Swiper modules
                     slidesPerView={1}
@@ -48,12 +48,12 @@ export default function HomeSlider() {
                 </Swiper>
             </div>
 
-            <div className='col-span-4' style={{ height: "100%" }} >
-                <div className='h-1/2'>
+            <div className='md:col-span-4 grid grid-cols-2 md:grid-cols-1 gap-2 ' style={{ height: "100%" }} >
+                <div className='h-full'>
                     <img src={img2} alt="" className='h-full w-full' />
                 </div>
 
-                <div className='h-1/2' >
+                <div className=' h-full' >
                     <img src={img3} alt="" className='h-full w-full' />
                 </div>
 

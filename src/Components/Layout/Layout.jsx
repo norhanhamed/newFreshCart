@@ -7,7 +7,7 @@ export default function Layout() {
   return (
     <>
      <Navbar />
-     <div className='pb-[240px] pt-[80px] myContainer'>
+     <div className='pb-[400px] pt-[30px] myContainer'>
      <Outlet  />
 
      </div>

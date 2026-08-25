@@ -6,21 +6,35 @@ import { CartContext } from '../../Context/Cart.Context';
 
 export default function Navbar() {
     const { token, logOut } = useContext(userContext);
+    const [isOpen, setIsOpen] = useState(false);
+
     const { getCartInfo, cartInfo } = useContext(CartContext);
     useEffect(() => { getCartInfo() }, [])
     return (
         <>
             <nav className=' py-5 bg-slate-100 w-full myContainer '>
-                <div className=" container  flex items-center  ">
+                <div className=" container flex items-center  ">
 
-                    <div className="flex justify-between items-center w-full">
-                        <h1> <a href="/" > <img src={logo} alt="" /> </a> </h1>
+                    <div className={` ${isOpen ? "hidden" : "flex"} justify-between items-center w-full `} >{/* logo */}
+                        <h1 > <a href="/" > <img src={logo} alt="" /> </a> </h1>
                     </div>
+                    {/* menuebar */} <button
+                        onClick={() => setIsOpen(true)}
+                        className="lg:hidden text-2xl" >
+                        <i className="fa-solid fa-bars"></i>
+                    </button>
 
-                    <div className='w-full  flex  gap-10 pt-0 items-center  '>
+                    <div className={`${isOpen ? "flex " : "hidden"} lg:flex w-full gap-6 pt-0  items-center justify-center flex-col lg:flex-row `}>
+
+                       {/* closeMenue */} <button
+                            onClick={() => setIsOpen(false)}
+                            className="lg:hidden self-end text-2xl">
+                            <i className="fa-solid fa-xmark"></i>
+                        </button>
+
                         {/* navigationLinks */}
                         {token ? (
-                            <ul className='flex flex-col lg:flex-row lg:gap-6 gap-8 lg:items-center items-start'>
+                            <ul className='flex flex-col lg:flex-row md:gap-6 gap-4 lg:items-center items-start'>
                                 <li>
                                     <NavLink to="/" className={({ isActive }) => {
                                         return ` relative before:h-[2px] hover:before:w-full hover:font-bold before:transition-[width] before:duration-300 before:absolute before:bg-primary before:left-0 before:-bottom-1
@@ -55,14 +69,14 @@ export default function Navbar() {
                             </ul>
                         ) : ("")}
 
-                        <Link to='/cart' className='ms-auto relative' >
-                            <i className="fa-solid fa-cart-shopping text-lg"></i>
-                            <span className="absolute top-0 right-0 translate-x-1/2 -translate-y-1/2 rounded-full text-sm font-bold text-white bg-primary w-5 h-5 flex justify-center items-center">
+                        <Link to='/cart' className='md:ms-auto relative ' >
+                            <i className="fa-solid fa-cart-shopping md:text-lg text-[40px]"></i>
+                            <span className="absolute top-0 right-0 translate-x-1/2 -translate-y-1/2 rounded-full md:text-sm text-[20px] font-bold text-white bg-primary md:w-5  w-6 md:h-5 h-6 flex justify-center items-center">
                                 {cartInfo === null ? (<i className='fa-solid fa-spinner fa-spin'></i>) : (cartInfo.numOfCartItems || 0)}</span>
                         </Link>
 
                         {/* social Media Icons */}
-                        <ul className='flex lg:justify-center justify-start gap-6  py-5 lg:py-0' >
+                        <ul className='md:flex hidden md:justify-center justify-start gap-6 py-5 lg:py-0 ' >
                             <li>
                                 <NavLink to="https://www.facebook.com">
                                     <i className='fa-brands fa-facebook lg:text-xl text-2xl ' ></i>
@@ -89,6 +103,7 @@ export default function Navbar() {
                                 </a>
                             </li>
                         </ul>
+
                         {/* Authentication  */}
                         <ul className='flex lg:justify-center justify-start lg:gap-6 gap-10  items-center'>
                             {!token ? (
@@ -109,8 +124,8 @@ export default function Navbar() {
                                 </>
                             ) : (
                                 <li className='cursor-pointer '>
-                                    <span onClick={logOut}>
-                                        <i className='fa-solid fa-right-from-bracket text-2xl'></i>
+                                    <span onClick={logOut} >
+                                        <i className='fa-solid fa-right-from-bracket md:text-2xl text-4xl'></i>
                                     </span>
                                 </li>
                             )}

@@ -6,7 +6,7 @@ export default function ProductCard({ productInfo }) {
   const { addProductToCart } = useContext(CartContext);
   return (
     <>
-      <div className='col-span-12 sm-col-span-6 md:col-span-4 lg-col-span-3 xl:col-span-2 shadow-lg rounded-md overflow-hidden '>
+      <div className='col-span-12  md:col-span-4 lg-col-span-3 xl:col-span-2 shadow-lg rounded-md overflow-hidden '>
 
         <div className="relative">
 
