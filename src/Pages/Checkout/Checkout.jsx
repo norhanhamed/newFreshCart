@@ -64,7 +64,9 @@ export default function Checkout() {
 
     }
 
+   
 
+    //Formik
     let formik = useFormik({
         initialValues: {
             "shippingAddress": {
@@ -73,11 +75,13 @@ export default function Checkout() {
                 "city": "",
             }
         },
+       
         onSubmit: (values) => {
             if (orederType === "cash") { createChashOrder(values) }
             else { createOnlineOreder(values) }
         }
     })
+
 
     return (
         <>

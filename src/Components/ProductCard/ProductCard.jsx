@@ -12,7 +12,7 @@ export default function ProductCard({ productInfo }) {
 
           <img src={images[0]} alt="" className="w-full" />
 
-          <div className="layer opacity-0 hover:opacity-100 transition-opacity duration-300 flex justify-center items-center gap-2 absolute w-full h-full left-0 top-0 bg-black/15 ">
+          <div className="layer  opacity-100 lg:opacity-0 lg:hover:opacity-100 transition-opacity duration-300 flex justify-center items-center gap-2 absolute w-full h-full left-0 top-0 bg-black/15 ">
 
             <div className="icon w-10 h-10 rounded-full bg-primary text-sm text-white flex justify-center items-center">
               <i className="fa-solid fa-heart"></i>
