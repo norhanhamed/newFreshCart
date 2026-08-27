@@ -16,6 +16,8 @@ import Checkout from './Pages/Checkout/Checkout';
 import AllOrders from './Pages/AllOrders/AllOrders';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import Products from './Pages/Products/Products';
+import Brands from './Pages/Brands/Brands';
+import Categories from './Pages/Categories/Categories';
 function App() {
   const routes = createBrowserRouter([
     {
@@ -28,8 +30,10 @@ function App() {
         { index: true, element: <Home /> },
         { path: "/category/:id", element: <h2>category </h2> },
         { path: "/cart", element: <Cart /> },
+        { path: "/category", element: <Categories /> },
         { path: "/products", element: <Products /> },
         { path: "/chekout", element: <Checkout /> },
+        { path: "/brands", element: <Brands /> },
         { path: "/allorders", element: <AllOrders /> },
         { path: "/product/:id", element: <ProductDetails /> },
         { path: "*", element: <NotFound /> }
