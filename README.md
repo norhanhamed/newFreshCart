@@ -36,6 +36,14 @@ The Home page is divided into reusable React components:
 #### 🛍️ Product Card
 - Reusable component for displaying product information
 - Product image, title, price, and other details
+  
+
+#### 📦 Products Data with React Query
+- Used React Query for fetching and managing products data.
+- Fetched products data on the Home Page.
+- Fetched products data on the Products Page.
+- Managed server state efficiently using React Query.
+- Improved data fetching and caching across the application.
 
 ### 🔑 User Context & Protected Routes
 - Implemented **React Context API** for managing the authentication token
@@ -43,7 +51,7 @@ The Home page is divided into reusable React components:
 - Authentication state is shared across the application
 
 
-🛒 Cart Context & API Integration
+### 🛒 Cart Context & API Integration
 
 Implemented a reusable Cart Context to manage shopping cart operations across the FreshCart application.
 
@@ -58,7 +66,14 @@ Implemented a reusable Cart Context to manage shopping cart operations across th
 - Integrated authentication tokens for authorized cart operations.
 - Added user feedback notifications using React Hot Toast.
 - Handled cart states dynamically, including empty carts and cart item counts
+  
 
 
 
+### 📱 Responsive Design
+- Improved and optimized the application responsiveness.
+- Responsive layouts for mobile, tablet, and desktop screens.
+- Added a mobile-friendly navigation menu with Burger and Close icons.
+- Optimized spacing, sizing, and component layouts for different screen sizes.
+- Maintained the desktop-style layout on larger screens.
 
