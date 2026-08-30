@@ -51,7 +51,7 @@ function App() {
   ],
 
     {
-      basename: "/newFreshCart",
+         basename: import.meta.env.BASE_URL,
     }
   );
   const myClient = new QueryClient()
