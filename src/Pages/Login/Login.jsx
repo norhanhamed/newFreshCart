@@ -22,6 +22,7 @@ export default function Login() {
 
   //navigate to login
   const navigate = useNavigate()
+
   //api function
   async function sendDataToLogin(values) {
     let id;
@@ -72,6 +73,17 @@ export default function Login() {
   })
 
   // console.log(formik)
+
+
+  // *** DEMO LOGIN FORMIK****
+  const demoLoginFormik = useFormik({
+    initialValues: {
+      email: "",
+      password: ""
+    },
+
+    onSubmit: sendDataToLogin
+  })
 
   return (
     <>
@@ -124,8 +136,26 @@ export default function Login() {
             }
 
           </div>
+          <div className="flex items-center justify-between">
+            <button className='btn-primary' type='submit'>Login In</button>
+            {/* *** DEMO LOGIN FORMIK BUTTON **** */}
+            <button
+              type="button"
+              onClick={() => {
+                demoLoginFormik.setValues({
+                  email: "Z@gmail.com",
+                  password: "Z123456"
+                });
+                demoLoginFormik.submitForm();
+              }}
+              className="btn-primary bg-white text-primary border border-primary cursor-pointer "
+            >
+              Easy Login 🚀 
+            </button>
+          </div>
 
-          <button className='btn-primary' type='submit'>Login In</button>
+
+
         </form>
       </section>
     </>

@@ -69,8 +69,12 @@ export default function Cart() {
           )}
         </section>
       )}
+      {
+        cartInfo.numOfCartItems === 0 ? (""):
+      
       <Link to="/chekout" className='btn-primary uppercase ms-auto block mt-3 w-fit' >next step</Link>
-
+      
+}
     </>
   )
 }

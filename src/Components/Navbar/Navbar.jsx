@@ -31,7 +31,7 @@ export default function Navbar() {
                     </div>
 
 
-                    {/* Burger Menu - Mobile Only */}
+                    {/* Burger Menu  */}
                     <button
                         onClick={() => setIsOpen(true)}
                         className={`${isOpen ? "hidden" : "block"} lg:hidden text-2xl`}
@@ -41,33 +41,18 @@ export default function Navbar() {
 
 
                     {/* Navbar Content */}
-                    <div
-                        className={`
-                            ${isOpen ? "flex" : "hidden"}
-                            lg:flex
-                            w-full
-                            gap-6
-                            items-start
-                            justify-between
-                            flex-col
-                            lg:flex-row
-                        `}
-                    >
+                    <div className={`${isOpen ? "flex" : "hidden"} lg:flex w-full gap-6 items-start justify-between flex-col lg:flex-row`}>
 
-                        {/* Close Button - Mobile Only */}
+                        {/* Close Button */}
                         <button
                             onClick={() => setIsOpen(false)}
-                            className="lg:hidden self-end text-2xl"
-                        >
+                            className="lg:hidden self-end text-2xl" >
                             <i className="fa-solid fa-xmark"></i>
                         </button>
 
-
                         {/* Navigation Links */}
                         {token ? (
-
                             <ul className='flex flex-col lg:flex-row gap-4 lg:gap-6 lg:items-center items-start lg:ms-auto'>
-
                                 <li>
                                     <NavLink
                                         to="/"
@@ -79,7 +64,6 @@ export default function Navbar() {
                                         Home
                                     </NavLink>
                                 </li>
-
 
                                 <li>
                                     <NavLink
@@ -93,7 +77,6 @@ export default function Navbar() {
                                     </NavLink>
                                 </li>
 
-
                                 <li>
                                     <NavLink
                                         to="/category"
@@ -106,7 +89,6 @@ export default function Navbar() {
                                     </NavLink>
                                 </li>
 
-
                                 <li>
                                     <NavLink
                                         to="/brands"
@@ -118,7 +100,6 @@ export default function Navbar() {
                                         Brands
                                     </NavLink>
                                 </li>
-
 
                                 <li>
                                     <NavLink
@@ -134,32 +115,28 @@ export default function Navbar() {
 
                             </ul>
 
-                        ) : ("")}
+                        ) : ("")
+                        }
 
 
-                        {/* Cart */}
-                        <Link
-                            to='/cart'
-                            className='lg:ms-auto relative'
-                        >
+                        {/* CartIcon */}
+                        {token && (
+                            <Link to='/cart' className='lg:ms-auto relative'>
+                                <i className="fa-solid fa-cart-shopping lg:text-lg text-[40px]"></i>
 
-                            <i className="fa-solid fa-cart-shopping lg:text-lg text-[40px]"></i>
-
-                            <span className="absolute top-0 right-0 translate-x-1/2 -translate-y-1/2 rounded-full lg:text-sm text-[20px] font-bold text-white bg-primary lg:w-5 w-6 lg:h-5 h-6 flex justify-center items-center">
-
-                                {cartInfo === null ? (
-                                    <i className='fa-solid fa-spinner fa-spin'></i>
-                                ) : (
-                                    cartInfo.numOfCartItems || 0
-                                )}
-
-                            </span>
-
-                        </Link>
+                                <span className="absolute top-0 right-0 translate-x-1/2 -translate-y-1/2 rounded-full lg:text-sm text-[20px] font-bold text-white bg-primary lg:w-5 w-6 lg:h-5 h-6 flex justify-center items-center">
+                                    {cartInfo === null ? (
+                                        <i className='fa-solid fa-spinner fa-spin'></i>
+                                    ) : (
+                                        cartInfo.numOfCartItems || 0
+                                    )}
+                                </span>
+                            </Link>
+                        )}
 
 
                         {/* Social Media Icons */}
-                        <ul className='lg:flex hidden justify-center gap-6 py-5 lg:py-0'>
+                        <ul className={` ${token ? "flex" : "ms-auto"} lg:flex hidden justify-center gap-6 py-5 lg:py-0 `}>
 
                             <li>
                                 <a href="https://www.facebook.com">
@@ -196,11 +173,8 @@ export default function Navbar() {
 
                         {/* Authentication */}
                         <ul className='flex lg:justify-center justify-start lg:gap-6 gap-10 items-center'>
-
                             {!token ? (
-
                                 <>
-
                                     <li>
                                         <NavLink
                                             to="/auth/login"
@@ -212,7 +186,6 @@ export default function Navbar() {
                                             Login
                                         </NavLink>
                                     </li>
-
 
                                     <li>
                                         <NavLink

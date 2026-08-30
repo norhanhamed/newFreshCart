@@ -21,7 +21,7 @@ export default function Footer() {
           <div className="flex flex-col lg:flex-row gap-7 lg:gap-0 justify-between  lg:items-center items-start mt-4">
 
             <div className="flex gap-2 items-center">
-              <span className='lg:text-[18px] text-[14px] font-medium'>Payment Parents</span>
+              <span className='lg:text-[18px] text-[13px] font-medium'>Payment Parents</span>
               <div className="flex gap-2 items-center">
                 <img src={amazonLogo} alt="" className="lg:w-16 w-14" />
                 <img src={americanExpressLogo} alt="" className="lg:w-16 w-14" />
@@ -31,7 +31,7 @@ export default function Footer() {
             </div>
 
             <div className="flex lg:gap-2 gap-15 items-center">
-              <span className='lg:text-[18px] text-[14px] font-medium'>Get deliveries with FreshCart </span>
+              <span className='lg:text-[18px] text-[12px] font-medium'>Get deliveries with FreshCart </span>
               <div className="flex gap-2 items-center">
                 <img src={googlePlay} alt="" className="lg:w-16 w-14" />
                 <img src={AppStore} alt="" className="lg:w-16 w-14" />
