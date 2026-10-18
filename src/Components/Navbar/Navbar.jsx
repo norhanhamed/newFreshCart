@@ -17,8 +17,7 @@ export default function Navbar() {
 
     return (
         <>
-            <nav className='py-5 bg-slate-100 w-full myContainer'>
-
+            <nav className=' py-5 bg-slate-100 w-full myContainer relative z-50 '>
                 <div className="container flex items-center justify-between">
 
                     {/* Logo */}
@@ -30,7 +29,6 @@ export default function Navbar() {
                         </h1>
                     </div>
 
-
                     {/* Burger Menu  */}
                     <button
                         onClick={() => setIsOpen(true)}
@@ -39,9 +37,22 @@ export default function Navbar() {
                         <i className="fa-solid fa-bars"></i>
                     </button>
 
-
                     {/* Navbar Content */}
-                    <div className={`${isOpen ? "flex" : "hidden"} lg:flex w-full gap-6 items-start justify-between flex-col lg:flex-row`}>
+                    
+                    <div className={`
+    fixed top-0 left-0 z-50
+    h-dvh w-[80%] max-w-[320px]
+    bg-white shadow-xl
+    flex flex-col items-stretch gap-8
+    p-6
+    transition-transform duration-300 ease-in-out
+    ${isOpen ? "translate-x-0" : "-translate-x-full"}
+    lg:static lg:z-auto lg:h-auto
+    lg:w-full lg:max-w-none
+    lg:translate-x-0 lg:shadow-none
+    lg:bg-transparent lg:p-0
+    lg:flex-row lg:items-center lg:gap-6
+  `}>
 
                         {/* Close Button */}
                         <button
@@ -56,6 +67,7 @@ export default function Navbar() {
                                 <li>
                                     <NavLink
                                         to="/"
+                                        onClick={() => setIsOpen(false)}
                                         className={({ isActive }) => {
                                             return `relative before:h-[2px] hover:before:w-full hover:font-bold before:transition-[width] before:duration-300 before:absolute before:bg-primary before:left-0 before:-bottom-1
                                             ${isActive ? "font-bold before:w-full" : "before:w-0"}`
@@ -68,6 +80,7 @@ export default function Navbar() {
                                 <li>
                                     <NavLink
                                         to="/products"
+                                        onClick={() => setIsOpen(false)}
                                         className={({ isActive }) => {
                                             return `relative before:h-[2px] hover:before:w-full hover:font-bold before:transition-[width] before:duration-300 before:absolute before:bg-primary before:left-0 before:-bottom-1
                                             ${isActive ? "font-bold before:w-full" : "before:w-0"}`
@@ -80,6 +93,7 @@ export default function Navbar() {
                                 <li>
                                     <NavLink
                                         to="/category"
+                                        onClick={() => setIsOpen(false)}
                                         className={({ isActive }) => {
                                             return `relative before:h-[2px] hover:before:w-full hover:font-bold before:transition-[width] before:duration-300 before:absolute before:bg-primary before:left-0 before:-bottom-1
                                             ${isActive ? "font-bold before:w-full" : "before:w-0"}`
@@ -92,6 +106,7 @@ export default function Navbar() {
                                 <li>
                                     <NavLink
                                         to="/brands"
+                                        onClick={() => setIsOpen(false)}
                                         className={({ isActive }) => {
                                             return `relative before:h-[2px] hover:before:w-full hover:font-bold before:transition-[width] before:duration-300 before:absolute before:bg-primary before:left-0 before:-bottom-1
                                             ${isActive ? "font-bold before:w-full" : "before:w-0"}`
@@ -104,6 +119,7 @@ export default function Navbar() {
                                 <li>
                                     <NavLink
                                         to="/allorders"
+                                        onClick={() => setIsOpen(false)}
                                         className={({ isActive }) => {
                                             return `relative before:h-[2px] hover:before:w-full hover:font-bold before:transition-[width] before:duration-300 before:absolute before:bg-primary before:left-0 before:-bottom-1
                                             ${isActive ? "font-bold before:w-full" : "before:w-0"}`
@@ -112,7 +128,6 @@ export default function Navbar() {
                                         Orders
                                     </NavLink>
                                 </li>
-
                             </ul>
 
                         ) : ("")
@@ -122,9 +137,9 @@ export default function Navbar() {
                         {/* CartIcon */}
                         {token && (
                             <Link to='/cart' className='lg:ms-auto relative'>
-                                <i className="fa-solid fa-cart-shopping lg:text-lg text-[40px]"></i>
+                                <i className=" fa-solid fa-cart-shopping lg:text-lg text-2xl"></i>
 
-                                <span className="absolute top-0 right-0 translate-x-1/2 -translate-y-1/2 rounded-full lg:text-sm text-[20px] font-bold text-white bg-primary lg:w-5 w-6 lg:h-5 h-6 flex justify-center items-center">
+                                <span className="absolute top-0 left-2 translate-x-1/2 -translate-y-1/2 rounded-full lg:text-sm text-[20px] font-bold text-white bg-primary lg:w-5 w-6 lg:h-5 h-6 flex justify-center items-center">
                                     {cartInfo === null ? (
                                         <i className='fa-solid fa-spinner fa-spin'></i>
                                     ) : (
@@ -206,7 +221,7 @@ export default function Navbar() {
                                 <li className='cursor-pointer'>
 
                                     <span onClick={logOut}>
-                                        <i className='fa-solid fa-right-from-bracket lg:text-2xl text-4xl'></i>
+                                        <i className='fa-solid fa-right-from-bracket lg:text-2xl text-2xl'></i>
                                     </span>
 
                                 </li>
@@ -220,6 +235,15 @@ export default function Navbar() {
                 </div>
 
             </nav>
+
+
+
+            {isOpen && (
+                <div
+                    onClick={() => setIsOpen(false)}
+                    className="fixed inset-0 z-40 bg-black/20 backdrop-blur-sm lg:hidden"
+                />
+            )}
         </>
     )
 }

@@ -2,9 +2,11 @@ import axios from 'axios'
 import { useFormik } from 'formik'
 import React, { useContext, useState } from 'react'
 import toast from 'react-hot-toast'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import * as Yup from "yup"
 import { userContext } from '../../Context/User.Context'
+import logo from '../../assets/images/freshcart-logo.svg'
+
 export default function Login() {
 
   //use usercontext 
@@ -88,10 +90,16 @@ export default function Login() {
   return (
     <>
       <section>
+        <div className='flex items-center justify-start md:justify-center gap-3 md:gap-5 pt-10 pb-15 md:pb-5 '>
+          <h1 className='text-2xl'>Welocme to </h1>
+          <img src={logo} alt="logo" />
+        </div>
+
         <h2 className="text-2xl text-primary font-bold mb-6">
           <i className="fa-regular fa-circle-user me-3"></i>
           <span>Login Now</span>
         </h2>
+        
         <form onSubmit={formik.handleSubmit} className='space-y-3'>
           <div>
             <input type="email"
@@ -150,13 +158,18 @@ export default function Login() {
               }}
               className="btn-primary bg-white text-primary border border-primary cursor-pointer "
             >
-              Easy Login 🚀 
+              Easy Login 
             </button>
           </div>
 
 
 
         </form>
+
+        <div className='flex flex-col md:flex-row items-center justify-start md:justify-center gap-3 md:gap-5 pt-15 md:pb-5 pb-10 pr-5'>
+          <h3 className='text-[18px] md:text-xl'> Don't Have an Account ?!</h3>
+          <Link to='/auth/signup' className='text-2xl text-primary underline'>REG Now!!</Link>
+        </div>
       </section>
     </>
   )

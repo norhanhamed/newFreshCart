@@ -2,8 +2,10 @@ import axios from 'axios'
 import { useFormik } from 'formik'
 import React, { useState } from 'react'
 import toast from 'react-hot-toast'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import * as Yup from "yup"
+import logo from '../../assets/images/freshcart-logo.svg'
+
 export default function Register() {
   //validation
   const phoneRegex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/
@@ -41,14 +43,14 @@ export default function Register() {
       //Successfully toast
       toast.success("User Created Successfully")
 
-                // nav to login when sign up success
+      // nav to login when sign up success
       setTimeout(() => {
-      if (data.message === "success"){
-        navigate("/auth/login")
-      }
+        if (data.message === "success") {
+          navigate("/auth/login")
+        }
 
       }, 3000);
-    
+
     } catch (error) {
       //dismiss wating toast
       toast.dismiss(id);
@@ -74,10 +76,16 @@ export default function Register() {
   return (
     <>
       <section>
+        <div className='flex items-center justify-start md:justify-center gap-3 md:gap-5 pt-10 pb-15 md:pb-5 '>
+          <h1 className='text-2xl'>Welocme to </h1>
+          <img src={logo} alt="logo" />
+        </div>
+
         <h2 className="text-2xl text-primary font-bold mb-6">
           <i className="fa-regular fa-circle-user me-3"></i>
           <span>Register Now</span>
         </h2>
+
         <form onSubmit={formik.handleSubmit} className='space-y-3'>
           <div>
             <input type="text"
@@ -172,6 +180,12 @@ export default function Register() {
           </div>
           <button className='btn-primary' type='submit'>Sign Up</button>
         </form>
+
+
+        <div className='flex flex-col md:flex-row items-center justify-start md:justify-center gap-3 md:gap-5 pt-15 md:pb-5 pb-10 pr-5'>
+          <h3 className='text-[18px] md:text-xl'> Already Have an Account?!</h3>
+          <Link to='/auth/login' className='text-2xl text-primary underline'>LOGIN Now!!</Link>
+        </div>
       </section>
     </>
   )
