@@ -90,18 +90,7 @@ export default function Navbar() {
                                     </NavLink>
                                 </li>
 
-                                <li>
-                                    <NavLink
-                                        to="/category"
-                                        onClick={() => setIsOpen(false)}
-                                        className={({ isActive }) => {
-                                            return `relative before:h-[2px] hover:before:w-full hover:font-bold before:transition-[width] before:duration-300 before:absolute before:bg-primary before:left-0 before:-bottom-1
-                                            ${isActive ? "font-bold before:w-full" : "before:w-0"}`
-                                        }}
-                                    >
-                                        Categories
-                                    </NavLink>
-                                </li>
+                            
 
                                 <li>
                                     <NavLink
