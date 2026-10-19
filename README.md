@@ -36,7 +36,7 @@ The Home page is divided into reusable React components:
 #### 🛍️ Product Card
 - Reusable component for displaying product information
 - Product image, title, price, and other details
-  
+  --- using : Pagination: Navigate through product lists in organized pages for a better browsing experience.
 
 #### 📦 Products Data with React Query
 - Used React Query for fetching and managing products data.
@@ -49,6 +49,11 @@ The Home page is divided into reusable React components:
 - Implemented **React Context API** for managing the authentication token
 - Protected routes to restrict access to authenticated users
 - Authentication state is shared across the application
+
+#### Product details
+-Conditional Rendering: Used the Ternary Operator (condition ? true : false) to display UI elements based on application state.
+-Product Reviews: Add and view customer reviews on product pages.
+-Related Products: Display products from the same category as the current product .
 
 
 ### 🛒 Cart Context & API Integration
