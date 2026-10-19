@@ -83,9 +83,7 @@ export default function ProductDetails() {
 
                                 </div>
 
-                                <div>
-                                    <Reviews productId={id} />
-                                </div>
+                              
                             </div>
                         </div>
                     </>
@@ -93,7 +91,9 @@ export default function ProductDetails() {
                 ) : (<Loading />)
             }
 
-
+  <div>
+                                    <Reviews productId={id} />
+                                </div>
             {/* relatedProducts   */}
             {relatedProducts.length > 0 && (
                 <section className="mt-10">
